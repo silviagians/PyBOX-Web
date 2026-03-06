@@ -57,5 +57,6 @@ The simulation generates five main files, using the prefix defined in --outpfile
 5. [outpfile]_EC2.tif: A 2D invasion map in GeoTIFF format. This represents the DEM of interest with the calculated invasion area overlaid, based on the energy conoid condition.
 
 ## Licence
+GNU General Public License v3.0
 Copyright (C) 2026 Silvia Giansante and PyBOX 1.0 authors
 
