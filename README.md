@@ -27,25 +27,26 @@ This script is executed from the command line. You can customise the simulation 
 To run a simulation, use the following syntax:
 python PyBOX-Web.py --lat 40.82 --lon 14.42 --margin 5000 --outpfile vesuvius_test
 
-Argument            Description
---lat               Latitude of the vent (Decimal Degrees)
---lon               Longitude of the vent (Decimal Degrees)
---margin            Distance from vent for DEM download (meters)
---l0                Initial front length (meters)
---h0                Initial current height (meters)
---theta0            Initial temperature (Kelvin)
---eps0              Initial volume fraction of solid (list: e.g., 0.01 0.02)
---rhos              Particle density (kg/m3. List: e.g., 2000 2500)
---ds                Particle diameter (meters. List: e.g., 0.001 0.0005)
---dt                Temporal resolution of the numerical integration (seconds)
---outpfile          Base name for all output files
+| Argument            | Description                                                |
+|---------------------|------------------------------------------------------------|
+| --lat               | Latitude of the vent (Decimal Degrees)                     |
+| --lon               | Longitude of the vent (Decimal Degrees)                    |
+| --margin            | Distance from vent for DEM download (meters)               |
+| --l0                | Initial front length (meters)                              |
+| --h0                | Initial current height (meters)                            |
+| --theta0            | Initial temperature (Kelvin)                               |
+| --eps0              | Initial volume fraction of solid (list: e.g., 0.01 0.02)   |
+| --rhos              | Particle density (kg/m3. List: e.g., 2000 2500)            |
+| --ds                | Particle diameter (meters. List: e.g., 0.001 0.0005).      |
+| --dt                | Temporal resolution of the numerical integration (seconds) |
+| --outpfile          | Base name for all output files                             |
 
 ## Output description
 The simulation generates five main files, using the prefix defined in --outpfile:
 1. [outpfile].tif: The Digital Elevation Model (DEM) retrieved from Microsoft Planetary Computer (Copernicus GLO-30), cropped to your area of interest. 
 2. [outpfile]_params.txt: A comprehensive log file containing all input parameters (physical and numerical) used for the specific run.
 3. [outpfile].csv: The physical results of the simulation. It includes:
-- length: Fron position (m)
+- length: Front position (m)
 - height: Current thickness (m)
 - rho_c: Mixture density (kg/m3)
 - u: Front velocity (m/s)
