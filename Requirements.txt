@@ -1,9 +1,0 @@
-numpy
-pandas
-scipy
-rasterio
-pyproj
-planetary-computer
-pystac-client
-stackstac
-requests
