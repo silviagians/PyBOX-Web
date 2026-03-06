@@ -1,5 +1,5 @@
 # ======================================================================
-Box Model for polydisperse, particle laden gravity currents
+# Box Model for polydisperse, particle laden gravity currents
 # ----------------------------------------------------------------------
 # This is a MODIFIED version of Pybox 1.0 adapted for web applications.
 # Original authors: G. Biagioli, A. Bevilacqua, T. Esposti Ongaro, M. de' Michieli Vitturi
