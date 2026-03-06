@@ -1,8 +1,11 @@
-# Box Model for polydisperse, particle laden gravity currents
-# Modified version of PyBOX 1.0: use as web application
-# Authors: Giovanni Biagioli, Andrea Bevilacqua, Tomaso Esposti Ongaro, Mattia de' Michieli Vitturi
-# Istituto Nazionale di Geofisica e Vulcanologia
-# Pisa, ITALY
+# ======================================================================
+Box Model for polydisperse, particle laden gravity currents
+# ----------------------------------------------------------------------
+# This is a MODIFIED version of Pybox 1.0 adapted for web applications.
+# Original authors: G. Biagioli, A. Bevilacqua, T. Esposti Ongaro, M. de' Michieli Vitturi
+# Institution: Istituto Nazionale di Geofisica e Vulcanologia (INGV)
+# Modified by: Silvia Giansante
+# Features: box model approach, energy conoid method, automated DEM retrieval via Microsoft Planetary Computer STAC API
 
 import numpy as np
 import pandas as pd
