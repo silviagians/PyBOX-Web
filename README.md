@@ -10,6 +10,7 @@ PyBOX is a box model for polydisperse, particle-laden gravity currents. This spe
 
 ## Credits & attribution
 The physical model and original logic were developed by:
+
 Giovanni Biagioli, Andrea Bevilacqua, Tomaso Esposti Ongaro, Mattia de' Michieli Vitturi - Istituto Nazionale di Geofisica e Vulcanologia (INGV), Pisa, Italy.
 
 ## Original references:
@@ -19,7 +20,7 @@ Giovanni Biagioli, Andrea Bevilacqua, Tomaso Esposti Ongaro, Mattia de' Michieli
 ## Requirements
 To run this model, you will need Python 3.x and the following libraries:
 
-`numpy`, `pandas`, `scipy`, `rasterio`, `pyproj`, `stackstac`, `pystac-client`, `requests`, `planetary-computer`. 
+`numpy`, `pandas`, `scipy`, `rasterio`, `pyproj`, `stackstac`, `pystac-client`, `requests`, `planetary-computer`
 
 ## How to use
 This script can be executed from the command line. You can customise the simulation by providing specific arguments.
@@ -47,7 +48,7 @@ All the following parameters can be modified from the command line:
 ## Output description
 The simulation generates five main files, using the prefix defined in `-o`:
 
-**1. [outpfile].tif**: The Digital Elevation Model (DEM) retrieved from Microsoft Planetary Computer (Copernicus GLO-30), cropped to your area of interest. 
+**1. [outpfile].tif**: The DEM retrieved from Microsoft Planetary Computer (Copernicus GLO-30), cropped to your area of interest. 
 
 **2. [outpfile]_params.txt**: A comprehensive log file containing all input parameters (physical and numerical) used for the specific run.
 
@@ -67,6 +68,7 @@ The simulation generates five main files, using the prefix defined in `-o`:
 
 ## License
 GNU General Public License v3.0
+
 Copyright (C) 2026 Silvia Giansante and PyBOX 1.0 authors
 
 
