@@ -12,6 +12,8 @@ PyBOX is a box model for polydisperse, particle-laden gravity currents. This spe
 The physical model and original logic were developed by:
 Giovanni Biagioli, Andrea Bevilacqua, Tomaso Esposti Ongaro, Mattia de' Michieli Vitturi - Istituto Nazionale di Geofisica e Vulcanologia (INGV), Pisa, Italy.
 
+Copyright (C) 2026 Silvia Giansante and PyBOX 1.0 authors
+
 ## Original references:
 * Manual: https://doi.org/10.5281/zenodo.2616551
 * Scientific paper: http://dx.doi.org/10.1016/j.jvolgeores.2016.08.002
