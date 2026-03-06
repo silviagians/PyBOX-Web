@@ -61,7 +61,7 @@ The simulation generates five main files, using the prefix defined in `-o`:
 - `TPE/TKE`: Potential and kinetic energy (J)
 - `hmax`: Energy conoid limit (m)
 - `time`: Simulation time (s)
-- 
+
 **4. [outpfile]_thickness.csv**: Deposit thickness data, including total thickness and individual contributions for each granulometric class.
   
 **5. [outpfile]_EC2.tif**: A 2D invasion map in GeoTIFF format. This represents the DEM of interest with the calculated invasion area overlaid, based on the energy conoid condition.
