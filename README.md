@@ -1,4 +1,4 @@
-# PyBOX-Web: Polydisperse gravity current Box Model
+# PyBOX-Web: Box model for polydisperse, particle-laden gravity currents
 
 This repository contains a modified version of the PyBOX 1.0 software. This adaptation is designed to function as a web-integrated application, featuring automated Digital Elevation Model (DEM) retrieval. 
 
