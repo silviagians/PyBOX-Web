@@ -5,6 +5,7 @@ Box Model for polydisperse, particle laden gravity currents
 # Original authors: G. Biagioli, A. Bevilacqua, T. Esposti Ongaro, M. de' Michieli Vitturi
 # Institution: Istituto Nazionale di Geofisica e Vulcanologia (INGV), Pisa, Italy
 # Modified by: Silvia Giansante
+# Copyright (C) 2026 Silvia Giansante and PyBOX 1.0 authors
 # Features: box model approach, energy conoid method, automated DEM retrieval via Microsoft Planetary Computer STAC API
 
 import numpy as np
