@@ -14,16 +14,16 @@ Giovanni Biagioli, Andrea Bevilacqua, Tomaso Esposti Ongaro, Mattia de' Michieli
 
 ## Original references:
 * Documentation: https://doi.org/10.5281/zenodo.2616551
-* Scientific paper: http://dx.doi.org/10.1016/j.jvolgeores.2016.08.002
+* Publication: http://dx.doi.org/10.1016/j.jvolgeores.2016.08.002
 
 ## Requirements
 To run this model, you will need Python 3.x and the following libraries:
-'numpy', 'pandas', 'scipy', 'rasterio', 'pyproj', 'stackstac', 'pystac-client', 'requests', 'planetary-computer'. 
+
+`numpy`, `pandas`, `scipy`, `rasterio`, `pyproj`, `stackstac`, `pystac-client`, `requests`, `planetary-computer`. 
 
 ## How to use
 This script can be executed from the command line. You can customise the simulation by providing specific arguments.
 
-## Key input parameters
 For direct execution from the command line, use the following syntax:
 
 `python PyBOX-Web.py --lat 40.82 --lon 14.42 --margin 5000 -o vesuvius_test`
@@ -46,20 +46,27 @@ All the following parameters can be modified from the command line:
 
 ## Output description
 The simulation generates five main files, using the prefix defined in `-o`:
+
 **1. [outpfile].tif**: The Digital Elevation Model (DEM) retrieved from Microsoft Planetary Computer (Copernicus GLO-30), cropped to your area of interest. 
+
 **2. [outpfile]_params.txt**: A comprehensive log file containing all input parameters (physical and numerical) used for the specific run.
+
 **3. [outpfile].csv**: The physical results of the simulation. It includes:
+
 - `length`: Front position (m)
-- `height`: Current thickness (m)
+- `height`: Thickness (m)
 - `rho_c`: Mixture density (kg/m<sup>3</sup>)
 - `u`: Front velocity (m/s)
 - `TPE/TKE`: Potential and kinetic energy (J)
 - `hmax`: Energy conoid limit (m)
 - `time`: Simulation time (s)
+- 
 **4. [outpfile]_thickness.csv**: Deposit thickness data, including total thickness and individual contributions for each granulometric class.
+  
 **5. [outpfile]_EC2.tif**: A 2D invasion map in GeoTIFF format. This represents the DEM of interest with the calculated invasion area overlaid, based on the energy conoid condition.
 
 ## License
 GNU General Public License v3.0
 Copyright (C) 2026 Silvia Giansante and PyBOX 1.0 authors
+
 
