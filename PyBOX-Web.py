@@ -3,7 +3,7 @@ Box Model for polydisperse, particle laden gravity currents
 # ----------------------------------------------------------------------
 # This is a MODIFIED version of Pybox 1.0 adapted for web applications.
 # Original authors: G. Biagioli, A. Bevilacqua, T. Esposti Ongaro, M. de' Michieli Vitturi
-# Institution: Istituto Nazionale di Geofisica e Vulcanologia (INGV)
+# Institution: Istituto Nazionale di Geofisica e Vulcanologia (INGV), Pisa, Italy
 # Modified by: Silvia Giansante
 # Features: box model approach, energy conoid method, automated DEM retrieval via Microsoft Planetary Computer STAC API
 
@@ -190,7 +190,6 @@ def dem_section(theta, nmax, xv, yv, d, ncols, nrows, cellsize, xdem, ydem, zdem
             break
 
     # Determine DEM pixel indices 
-    # (Keeping the original logic for indexing)
 
     for i in range(i1 + 1):
         ix = np.searchsorted(xdem, x_pos[i], side='left')
@@ -453,7 +452,7 @@ def run_box_model(args):
                 hmx_limit = hmax_of_l[dist_idx]
                 dmax[int(nb)] = sr * na
 
-                # Energy coinoid condition
+                # Energy conoid condition
                 if args.differential_topography:
                     zrmin = min(zr[na], zrmin)
                     if (zr[na] - zrmin > hmx_limit): break
