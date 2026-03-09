@@ -1,5 +1,7 @@
 # PyBOX-Web: automated Box Model for particle-laden gravity current simulation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18920969.svg)](https://doi.org/10.5281/zenodo.18920969)
+
 This repository contains a **modified version** of the **PyBOX 1.0** software. This adaptation is designed to function as a web-integrated application with automated Digital Elevation Model (DEM) retrieval. It can be deployed as a web service or used as a standalone command-line tool. 
 
 ## Overview
