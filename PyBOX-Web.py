@@ -155,6 +155,7 @@ def write_dem(output_file, ncols, nrows, xll, yll, cellsize, invasion, crs):
         height=nrows, width=ncols,
         count=1, dtype='uint8',
         crs=crs, transform=transform,
+        nodata=0
         ) as dst:
             #Re-flip to match standard raster orientation
             dst.write(np.flipud(invasion).astype('uint8'),1)
