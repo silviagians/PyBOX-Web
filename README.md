@@ -31,27 +31,30 @@ To run this model, you will need Python 3.x and the following libraries:
 `numpy`, `pandas`, `scipy`, `rasterio`, `pyproj`, `stackstac`, `pystac-client`, `requests`, `planetary-computer`
 
 ## Usage
-This script can be executed from the command line. You can customise the simulation by providing specific arguments.
+PyBOX-Web can be executed from the command line using the following syntax:
 
-For direct execution from the command line, use the following syntax:
+`python PyBOX-Web.py --lat 40.82 --lon 14.42 --margin 5000 --l0 500 --h0 400 --theta0 300 --eps0 0.01 --rhos 2500 --ds 0.001 --dt 5 -o vesuvius_test`
 
-`python PyBOX-Web.py --lat 40.82 --lon 14.42 --margin 5000 --l0 500 --h0 400 --theta0 300 --eps0 0.01 --rhos 2700 --ds 0.001 --dt 5 -o vesuvius_test`
+For simulations involving multiple particle size classes, provide the corresponding parameters as lists:
+`python PyBOX-Web.py --lat 40.82 --lon 14.42 --margin 5000 --l0 500 --h0 400 --theta0 300 --eps0 0.01 0.05 --rhos 2500 2700 --ds 0.001 0.0001 --dt 5 -o vesuvius_test`
 
-All the following parameters can be modified from the command line:
+The following input parameters can be specified from the command line:
 
 | Argument              | Description                                                |
 |-----------------------|------------------------------------------------------------|
-| `--lat`               | Latitude of the vent (Decimal Degrees)                     |
-| `--lon`               | Longitude of the vent (Decimal Degrees)                    |
-| `--margin`            | Distance from vent for DEM download (meters)               |
-| `--l0`                | Initial front length (meters)                              |
-| `--h0`                | Initial current height (meters)                            |
+| `--lat`               | Latitude of the vent (decimal Degrees)                     |
+| `--lon`               | Longitude of the vent (decimal Degrees)                    |
+| `--margin`            | Distance from vent used for DSM download (m)               |
+| `--l0`                | Initial PDC front length (m)                               |
+| `--h0`                | Initial PDC thickness (m)                                  |
 | `--theta0`            | Initial temperature (Kelvin)                               |
-| `--eps0`              | Initial volume fraction of solid (list: e.g., 0.01 0.02)   |
-| `--rhos`              | Particle density (kg/m3. List: e.g., 2000 2500)            |
-| `--ds`                | Particle diameter (meters. List: e.g., 0.001 0.0005).      |
-| `--dt`                | Temporal resolution of the numerical integration (seconds) |
-| `-o`                  | Base name for all output files                             |
+| `--eps0`              | Initial solid volume fraction                              |
+| `--rhos`              | Particle density (kg/m^3).                                 |
+| `--ds`                | Particle size class (m)                                    |
+| `--dt`                | Numerical integration time step (s)                        |
+| `-o`                  | Base name for output files                                 |
+
+Note: For polydisperse simulations, `--eps0`, `--rhos`, and `--ds` must contain the same number of values, corresponding to the different particle-size classes.
 
 ## Output
 Each simulation generates the following output files:
