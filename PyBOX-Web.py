@@ -203,6 +203,75 @@ def dem_section(theta, nmax, xv, yv, d, ncols, nrows, cellsize, xdem, ydem, zdem
 
     return flag, z, i1
 
+def write_sld_invasion(output_file_base):
+"""
+Generates an OGC Standard SLD file for the invasion map.
+Sets the invaded zone to Red with 40% transparency (0.60 opacity).
+"""
+    sld_content = """<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld">
+  <NamedLayer>
+    <Name>Invasion_Layer</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <RasterSymbolizer>
+            <ColorMap type="values">
+              <!-- Value 0 (No invasion): transparent (opacity 0.0) -->
+              <ColorMapEntry color="#000000" quantity="0" opacity="0.0" label="Safe"/>
+              <!-- Value 1 (Invasion): Red opacity 0.60 -->
+              <ColorMapEntry color="#DC3220" quantity="1" opacity="0.60" label="Invaded Zone"/>
+            </ColorMap>
+          </RasterSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+"""
+    sld_filename = f"{output_file_base}_EC2.sld"
+    with open(sld_filename, 'w', encoding='utf-8') as f:
+        f.write(sld_content)
+    print(f"SLD invasion style file saved: {sld_filename}")
+
+def write_sld_hillshade(output_file_base):
+"""
+Generates an OGC Standard SLD file to render the raw DEM
+as a 3D hillshade.
+"""
+    sld_content = """<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor version="1.0.0"
+    xmlns="http://www.opengis.net/sld"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>DEM_Hillshade</Name>
+    <UserStyle>
+      <Title>Hillshade Shaded Relief</Title>
+      <FeatureTypeStyle>
+        <Rule>
+          <RasterSymbolizer>
+            <ShadedRelief>
+              <BrightnessContrast>
+                <Brightness>0.0</Brightness>
+                <Contrast>0.0</Contrast>
+              </BrightnessContrast>
+            </ShadedRelief>
+          </RasterSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+"""
+    # Creates .sld file associated with the DEM
+    sld_filename = f"{output_file_base}.sld"
+    with open(sld_filename, 'w', encoding='utf-8') as f:
+        f.write(sld_content)
+    print(f"SLD hillshade style file saved: {sld_filename}")
+
 # ========================================================================
 # 2. PHYSICS SUBROUTINES
 # ========================================================================
@@ -484,8 +553,13 @@ def run_box_model(args):
         write_dem(f"{args.outpfile}_EC2.tif", nx, ny, xll, yll, cellsize, invasion.astype(int), epsg_code)
         print(f"2D GeoTIFF map saved: {args.outpfile}_EC2.tif")
 
+        #Generating .sld file for invasion
+        write_sld_invasion(args.outpfile)
+
+        #Generating .sld file for hillshade
+        write_sld_hillshade(args.outpfile)
 # ==============================================================================================
-# 5. PARSER & EXECUTION FLOW
+# 5. PARSER
 # ==============================================================================================
 
 def parse_arguments():
