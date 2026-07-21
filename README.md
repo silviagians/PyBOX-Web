@@ -36,6 +36,7 @@ PyBOX-Web can be executed from the command line using the following syntax:
 `python PyBOX-Web.py --lat 40.82 --lon 14.42 --margin 5000 --l0 500 --h0 400 --theta0 300 --eps0 0.01 --rhos 2500 --ds 0.001 --dt 5 -o vesuvius_test`
 
 For simulations involving multiple particle size classes, provide the corresponding parameters as lists:
+
 `python PyBOX-Web.py --lat 40.82 --lon 14.42 --margin 5000 --l0 500 --h0 400 --theta0 300 --eps0 0.01 0.05 --rhos 2500 2700 --ds 0.001 0.0001 --dt 5 -o vesuvius_test`
 
 The following input parameters can be specified from the command line:
@@ -49,7 +50,7 @@ The following input parameters can be specified from the command line:
 | `--h0`                | Initial PDC thickness (m)                                  |
 | `--theta0`            | Initial temperature (Kelvin)                               |
 | `--eps0`              | Initial solid volume fraction                              |
-| `--rhos`              | Particle density (kg/m^3).                                 |
+| `--rhos`              | Particle density (kg/m³).                                 |
 | `--ds`                | Particle size class (m)                                    |
 | `--dt`                | Numerical integration time step (s)                        |
 | `-o`                  | Base name for output files                                 |
