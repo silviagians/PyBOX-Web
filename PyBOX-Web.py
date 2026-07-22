@@ -730,7 +730,7 @@ if __name__ == "__main__":
 
     with open(log_filename, "w") as f:
         f.write("="*50 + "\n")
-        f.write("SIMULATION INPUT LOG\n")
+        f.write("SIMULATION INPUT PARAMETERS\n")
         f.write("="*50 + "\n")
 
         # Change args into a python dict for a better visualisation of input data
