@@ -17,6 +17,8 @@ import scipy.integrate
 import os
 import shutil
 import rasterio
+import matplotlib.pyplot as plt
+from matplotlib.colors import LightSource
 from pyproj import Transformer
 from linecache import getline
 from rasterio.warp import calculate_default_transform, reproject, Resampling
@@ -271,6 +273,49 @@ as a 3D hillshade.
     with open(sld_filename, 'w', encoding='utf-8') as f:
         f.write(sld_content)
     print(f"SLD hillshade style file saved: {sld_filename}")
+
+def generate_overlay_png(output_png, xdem, ydem, zdem, invasion, xv, yv):
+    """
+    Generates PNG overlay image with DSM (hillshade) and PDC invasion area.
+    """
+    #print("--- Generating overlay PNG image... ---")
+
+    # 1. Hillshade calculation
+    ls = LightSource(azdeg=315, altdeg=45)
+
+    zdem_correct = np.flipud(zdem)
+    hillshade = ls.hillshade(zdem_correct, vert_exag=1.0)
+
+    # 2. Sets transparent mask for no invasion cells  
+    invasion_correct = np.flipud(invasion)
+    invasion_masked = np.ma.masked_where(~invasion_correct, invasion_correct)
+
+    # 3. Creates overlay PNG figure
+    fig, ax = plt.subplots(figsize=(10, 8), dpi=300)
+
+    # Sets map boundaries
+    extent = [xdem[0], xdem[-1], ydem[0], ydem[-1]]
+
+    # Show hillshade DEM
+    ax.imshow(hillshade, cmap='gray', extent=extent, origin='lower')
+
+    # Show overlay invasion area 
+    ax.imshow(invasion_masked, cmap='YlOrRd', alpha=0.5, extent=extent, origin='lower', vmin=0, vmax=1)
+
+    # Show source (vent)
+    ax.plot(xv, yv, marker='^', color='black', markersize=8, markeredgecolor='white', label='Source vent')
+
+    # Labels
+    ax.set_xlabel("Easting (m)", fontsize=10)
+    ax.set_ylabel("Northing (m)", fontsize=10)
+    ax.ticklabel_format(style='plain', useOffset=False) 
+    ax.grid(True, linestyle=':', alpha=0.5)
+    ax.legend(loc='upper right')
+
+    # Saving image
+    plt.savefig(output_png, bbox_inches='tight', format='png')
+    plt.close(fig) # Closes figure
+    print(f"PNG image successfully saved: {output_png}")
 
 # ========================================================================
 # 2. PHYSICS SUBROUTINES
@@ -558,6 +603,10 @@ def run_box_model(args):
 
         #Generating .sld file for hillshade
         write_sld_hillshade(args.outpfile)
+
+        # Generating overlay PNG image
+        output_png = f"{args.outpfile}_overlay.png"
+        generate_overlay_png(output_png, xdem, ydem, zdem, invasion, args.xv, args.yv)
 # ==============================================================================================
 # 5. PARSER
 # ==============================================================================================
@@ -677,6 +726,8 @@ if __name__ == "__main__":
     # --- Log file creation (CSV format) ---
     log_filename = f"{args.outpfile}_params.txt"
 
+    excluded_keys = {'dem_file', 'outpfile', 'cache_dir'}
+
     with open(log_filename, "w") as f:
         f.write("="*50 + "\n")
         f.write("SIMULATION INPUT LOG\n")
@@ -684,7 +735,8 @@ if __name__ == "__main__":
 
         # Change args into a python dict for a better visualisation of input data
         for key, value in vars(args).items():
-            f.write(f"{key:25} : {value}\n")
+            if key not in excluded_keys:
+                f.write(f"{key:25} : {value}\n")
         f.write("="*50 + "\n")
 
     print(f"List of parameters successfully saved to: {log_filename}")
