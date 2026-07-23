@@ -3,9 +3,9 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18920969.svg)](https://doi.org/10.5281/zenodo.18920969)
 
 ## Overview
-PyBOX-Web is a Python implementation of the original **PyBOX** software (Biagioli et al., 2019) for simulating the propagation of gravity-driven, polydisperse pyroclastic density currents (PDCs) using a box-model approach. It predicts two-dimensional inundation areas using the energy-conoid method and topography derived from the Copernicus GLO-30 Digital Elevation Model (DEM), a Digital Surface Model (DSM)-product. 
+**PyBOX-Web** is a **Python** implementation of the original **PyBOX** software (Biagioli et al., 2019) for simulating the propagation of gravity-driven, polydispers **pyroclastic density currents** (PDCs) using a box-model approach. It predicts two-dimensional inundation areas using the energy-conoid method and topography derived from the Copernicus GLO-30 Digital Elevation Model (DEM), a Digital Surface Model (DSM)-product. 
 
-The repository preserves the original box model formulation while introducing new functionalities aimed at simplyfing simulation setup and enabling integration into web-based applications. PyBOX-Web can be executed as a standalone command-line code or deployed as a web service. 
+The repository preserves the original box model formulation while introducing new functionalities aimed at simplyfing simulation setup and enabling integration into web-based applications. PyBOX-Web can be executed as a standalone **command-line code** or deployed as a **web service**. 
 
 The main extensions include:
 * **Automated topography retrieval**: automatic download of Copernicus DEM (GLO-30) data through the Microsoft Planetary Computer database. 
