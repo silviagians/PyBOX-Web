@@ -283,12 +283,10 @@ def generate_overlay_png(output_png, xdem, ydem, zdem, invasion, xv, yv):
     # 1. Hillshade calculation
     ls = LightSource(azdeg=315, altdeg=45)
 
-    zdem_correct = np.flipud(zdem)
-    hillshade = ls.hillshade(zdem_correct, vert_exag=1.0)
+    hillshade = ls.hillshade(zdem, vert_exag=1.0)
 
     # 2. Sets transparent mask for no invasion cells  
-    invasion_correct = np.flipud(invasion)
-    invasion_masked = np.ma.masked_where(~invasion_correct, invasion_correct)
+    invasion_masked = np.ma.masked_where(~invasion, invasion)
 
     # 3. Creates overlay PNG figure
     fig, ax = plt.subplots(figsize=(10, 8), dpi=300)
