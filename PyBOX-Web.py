@@ -206,10 +206,10 @@ def dem_section(theta, nmax, xv, yv, d, ncols, nrows, cellsize, xdem, ydem, zdem
     return flag, z, i1
 
 def write_sld_invasion(output_file_base):
-"""
-Generates an OGC Standard SLD file for the invasion map.
-Sets the invaded zone to Red with 40% transparency (0.60 opacity).
-"""
+    """
+    Generates an OGC Standard SLD file for the invasion map.
+    Sets the invaded zone to Red with 40% transparency (0.60 opacity).
+    """
     sld_content = """<?xml version="1.0" encoding="UTF-8"?>
 <StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld">
   <NamedLayer>
@@ -237,10 +237,10 @@ Sets the invaded zone to Red with 40% transparency (0.60 opacity).
     print(f"SLD invasion style file saved: {sld_filename}")
 
 def write_sld_hillshade(output_file_base):
-"""
-Generates an OGC Standard SLD file to render the raw DEM
-as a 3D hillshade.
-"""
+    """
+    Generates an OGC Standard SLD file to render the raw DEM
+    as a 3D hillshade.
+    """
     sld_content = """<?xml version="1.0" encoding="UTF-8"?>
 <StyledLayerDescriptor version="1.0.0"
     xmlns="http://www.opengis.net/sld"
